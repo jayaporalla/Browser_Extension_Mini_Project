@@ -2,18 +2,21 @@ import { createContext, useContext, useReducer  } from "react";
 import { browserReducer } from "../reducer/browser-reducer";
 
 const initialValue = {
-    name: ""
+    name: "",
+    time: "",
+    message: "",
+    task: null
 }
 
 const BrowserContext = createContext(initialValue);
 
-const BrowserProvider = ({ children }) => {
+const BrowserProvider = ({children}) => {
 
-    const [{name}, browserDispatch] = useReducer(browserReducer, initialValue)
+    const [{name, time, message, task}, browserDispatch] = useReducer(browserReducer, initialValue)
 
-    return(
-        <BrowserContext.Provider value={{name, browserDispatch}}>
-            { children }
+    return (
+        <BrowserContext.Provider value={{name, time, message, task, browserDispatch}}>
+            {children}
         </BrowserContext.Provider>
     )
 }

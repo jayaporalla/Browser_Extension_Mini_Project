@@ -1,14 +1,14 @@
 import './App.css';
 import { images } from './db/images';
-import { Home } from './pages/Home/Home.js';
+import { Home, Task } from './pages/index.js';
 import { useBrowser } from './context/browser-context.js';
-import { Task } from './pages/Task/task.js';
 import { useEffect } from 'react';
+
+const index = Math.floor(Math.random() * images.length);
+const bgImage = images[index].image;
 
 function App() {
 
-  const index = Math.floor(Math.random() * images.length);
-  const bgImage = images[index].image;
   const {name, browserDispatch} = useBrowser();
 
   useEffect(() => {
